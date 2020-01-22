@@ -40,6 +40,17 @@ function TodoList() {
         }
     }
 
+    const handleTodoDeletion = (event, sItem) => {
+        event.preventDefault();
+        const index = allItems.findIndex((item) => item.id === sItem.id);
+        if(index >= 0) { 
+            setAllItems([
+                ...allItems.slice(0, index),
+                ...allItems.slice(index+1)
+            ])
+        }
+    }
+
     return (
         <main>
             <form onSubmit={saveTodo}>
@@ -47,7 +58,7 @@ function TodoList() {
                 <input type='text' name='add-todo' value={addItem} onChange={handleAddTodo} />
                 <button>Add</button>
             </form>
-            <TodoItems item={allItems} statusChange={handleStatusChange}/>
+            <TodoItems item={allItems} statusChange={handleStatusChange} deleteTodo={handleTodoDeletion} />
         </main>
     )
 }

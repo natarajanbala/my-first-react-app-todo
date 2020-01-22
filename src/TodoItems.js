@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 function TodoItems(props) {
-    
     return (
         <div>
             <form>
@@ -18,6 +17,12 @@ function TodoItems(props) {
                                     onChange={(event) => {props.statusChange(event, item)}} 
                                 />
                                 <label htmlFor={item.id+'_id'}>{item.text}</label>
+                                <a 
+                                    href="#"
+                                    onClick={(event) => {props.deleteTodo(event, item)}} 
+                                >
+                                    Delete
+                                </a>
                             </li>
                         )
                     }
