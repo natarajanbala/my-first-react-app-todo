@@ -4,12 +4,12 @@ function TodoItems(props) {
     return (
         <div>
             <form>
-                <ul>
+                <ul className="list-group">
                     {
                         props &&
                         props.item.length > 0 &&
                         props.item.map((item) =>
-                            <li key={item.id}>
+                            <li className="list-group-item" key={item.id}>
                                 <input 
                                     type="checkbox" 
                                     name={item.id + '_id'} 

@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import TodoItems from './TodoItems';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Toast from 'react-bootstrap/Toast';
+
+import Button from 'react-bootstrap/Button';
 
 function TodoList() {
     const [allItems, setAllItems] = useState([]);
@@ -26,15 +30,15 @@ function TodoList() {
         console.log('sc - ', event.target.checked, sItem);
         const index = allItems.findIndex((item) => item.id === sItem.id);
         console.log('index - ', index);
-        if(index >= 0) {
+        if (index >= 0) {
             setAllItems([
                 ...allItems.slice(0, index),
                 Object.assign({}, allItems[index], {
                     id: sItem.id,
                     text: sItem.text,
-                    status: event.target.checked ? 'completed': 'new'
+                    status: event.target.checked ? 'completed' : 'new'
                 }),
-                ...allItems.slice(index+1)
+                ...allItems.slice(index + 1)
             ])
 
         }
@@ -43,10 +47,10 @@ function TodoList() {
     const handleTodoDeletion = (event, sItem) => {
         event.preventDefault();
         const index = allItems.findIndex((item) => item.id === sItem.id);
-        if(index >= 0) { 
+        if (index >= 0) {
             setAllItems([
                 ...allItems.slice(0, index),
-                ...allItems.slice(index+1)
+                ...allItems.slice(index + 1)
             ])
         }
     }
@@ -54,9 +58,10 @@ function TodoList() {
     return (
         <main>
             <form onSubmit={saveTodo}>
-                <label htmlFor='add-todo'>Add todo:</label>
-                <input type='text' name='add-todo' value={addItem} onChange={handleAddTodo} />
-                <button>Add</button>
+                <input placeholder="Add a to-do!" type='text' name='add-todo' value={addItem} onChange={handleAddTodo} />
+                <Button type="submit" variant="primary" className="mr-1">
+                    Add
+                </Button>
             </form>
             <TodoItems item={allItems} statusChange={handleStatusChange} deleteTodo={handleTodoDeletion} />
         </main>

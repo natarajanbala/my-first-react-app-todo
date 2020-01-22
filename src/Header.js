@@ -4,7 +4,7 @@ import React from "react";
 function Header() {
     return (
         <header>
-            <h1>My Todo app</h1>
+            <h1 className="header">My Todo app</h1>
         </header>
     )
 }
