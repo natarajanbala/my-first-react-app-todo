@@ -11,7 +11,7 @@ import TodoList from './TodoList';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Container className="p-3">
         <Jumbotron>
           <Header />

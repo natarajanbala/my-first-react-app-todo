@@ -15,14 +15,16 @@ function TodoList() {
 
     const saveTodo = (event) => {
         event.preventDefault();
-        setAllItems([
-            ...allItems,
-            {
-                id: Math.ceil(Math.random() * 100),
-                text: addItem,
-                status: 'new'
-            }
-        ]);
+        if(addItem.trim() !== '') {
+            setAllItems([
+                ...allItems,
+                {
+                    id: Math.ceil(Math.random() * 100),
+                    text: addItem,
+                    status: 'new'
+                }
+            ]);
+        }
         setAddItem("");
     }
 
@@ -58,10 +60,22 @@ function TodoList() {
     return (
         <main>
             <form onSubmit={saveTodo}>
-                <input placeholder="Add a to-do!" type='text' name='add-todo' value={addItem} onChange={handleAddTodo} />
-                <Button type="submit" variant="primary" className="mr-1">
-                    Add
-                </Button>
+                <div className="form-row align-items-center">
+                    <div className="col-auto">
+                        <input
+                            placeholder="Add a to-do!"
+                            type='text'
+                            name='add-todo'
+                            className="form-control mb-2"
+                            value={addItem}
+                            onChange={handleAddTodo} />
+                    </div>
+                    <div className="col-auto">
+                        <button type="submit" className="btn btn-primary mb-2">
+                            Add
+                    </button>
+                    </div>
+                </div>
             </form>
             <TodoItems item={allItems} statusChange={handleStatusChange} deleteTodo={handleTodoDeletion} />
         </main>
