@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
 import TodoItems from './TodoItems';
-import Jumbotron from 'react-bootstrap/Jumbotron';
-import Toast from 'react-bootstrap/Toast';
-
-import Button from 'react-bootstrap/Button';
 
 function TodoList() {
     const [allItems, setAllItems] = useState([]);

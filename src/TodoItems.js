@@ -2,9 +2,8 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 
 function TodoItems(props) {
-    const todoStatus = {
-        color: 'blue'
-    }
+    const todoStatusNew = { color: 'blue' };
+    const todoStatusCompleted = { color: 'green' };
     return (
         <div>
             <form>
@@ -26,7 +25,7 @@ function TodoItems(props) {
                                     <Col xs={8}>
                                         <label
                                             htmlFor={item.id + '_id'}
-                                            style={todoStatus}
+                                            style={item.status === 'completed' ? todoStatusCompleted : todoStatusNew}
                                         >
                                           <strong> {item.text}</strong> 
                                         </label>
